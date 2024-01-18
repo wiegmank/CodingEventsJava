@@ -5,15 +5,19 @@
 
 <header th:replace="fragments :: header"></header>
 
-<table class="table table-striped">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Event</th><th>Description</th><th>Address</th>
         </tr>
     </thead>
-    <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
-    </tr>
+    <th:block th:each="event : ${events}">
+        <tr>
+            <td th:text="${event.key}"</td>
+            <td th:text="${event.value}"></td>
+            <td th:replace="fragments :: address"></td>
+        </tr>
+    </th:block>
 </table>
 
 </body>
