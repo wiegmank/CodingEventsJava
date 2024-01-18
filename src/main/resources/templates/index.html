@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
-    <p>"this is index in the templates folder"</p>
-    <a href="/events">Events</a>
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1>Coding Events</h1>
+
+<nav th:replace="fragments :: header"></nav>
+
 </body>
 </html>
 
