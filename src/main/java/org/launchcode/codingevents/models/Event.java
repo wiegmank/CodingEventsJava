@@ -1,8 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
@@ -25,11 +23,28 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Please enter an address.")
+    private String location;
+
+    @AssertTrue(message = "This must be yes/true")
+    private boolean isRegRequired;
+
+    @NotBlank(message = "Number of attendees is required.")
+    @Positive( message = "There must be at least 1 attendee")
+    private int numAttendees;
+
+    @PositiveOrZero(message = "Entry fee cannot be negative, but may be $0.")
+    private int entryFee;
+
+    public Event(String name, String description, String contactEmail, String location, boolean isRegRequired, int numAttendees, int entryFee) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.location = location;
+        this.isRegRequired = isRegRequired;
+        this.numAttendees = numAttendees;
+        this.entryFee = entryFee;
     }
 
     public Event() {
@@ -59,6 +74,38 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isRegRequired() {
+        return isRegRequired;
+    }
+
+    public void setRegRequired(boolean regRequired) {
+        this.isRegRequired = regRequired;
+    }
+
+    public int getNumAttendees() {
+        return numAttendees;
+    }
+
+    public void setNumAttendees(int numAttendees) {
+        this.numAttendees = numAttendees;
+    }
+
+    public int getEntryFee() {
+        return entryFee;
+    }
+
+    public void setEntryFee(int entryFee) {
+        this.entryFee = entryFee;
     }
 
     public int getId() {
